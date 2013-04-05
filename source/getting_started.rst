@@ -1,46 +1,49 @@
 Getting Started
 ===============
 
-This section is primarily written for Windows users. There is an extra section
-about installing Git Extensions on Linux. 
+このセクションは、主にWindowsユーザーを対象に書かれています。
+LinuxにGit Extensionsをインストールする追加のセクションがあります。
 
 .. index::
-   single: Getting Started; Installation
+   single: Getting Started; インストール
 
-Installation
+
+インストール
 ------------
 
-There is a single click installer that installs MSysGit, kdif3 and Git Extensions. The installer will detect 
-if 32bit and/or 64bit versions should be installed.
-The installer can be found `here <http://code.google.com/p/gitextensions/>`_.
+msysgit、kdiff3、そしてGit Extensionsをシングルクリックでインストールできるインストーラーがあります。
+32bit/64bitのどちらのバージョンをインストールするかは、インストーラーが検出します。
+インストーラーは次の場所から入手できます。 `インストーラーを入手 <http://code.google.com/p/gitextensions/>`_
 
 .. figure:: /images/install/install1.png
 
 .. figure:: /images/install/install2.png
 
-    Git Extensions depends heavily on MSysGit. When MSysGit is not installed install this first. Kdiff3 is 
-    optional, but is advised as a merge tool.
+    Git Extensionsはmsysgitに大きく依存しています。msysgitをインストールしていない場合は、まずインストールしてください。
+    Kdiff3はオプションですが、マージツールとしておすすめします。
 
 .. figure:: /images/install/install3.png
 
 .. figure:: /images/install/install4.png
 
-    Choose the options to install.
+    インストールオプションを選択します。
 
 .. figure:: /images/install/install5.png
 
-    Choose the SSH client to use. PuTTY is the default because it has better windows integration.
+    使用するSSHクライアントを選択します。
+    Windowsと非常によく統合されているので、PuTTYをデフォルトにしています。
 
 .. figure:: /images/install/install6.png
 
-Installation (Linux)
---------------------
-You can watch this video as a starting point: `Install Git Extensions on Ubuntu 11.04  <http://www.youtube.com/watch?v=zk2MMUQuW4s>`_
+Linuxへのインストール
+---------------------
 
-For further help go to https://groups.google.com/forum/?fromgroups=#!forum/gitextensions
+まずは次のビデオを見て下さい。 `Install Git Extensions on Ubuntu 11.04  <http://www.youtube.com/watch?v=zk2MMUQuW4s>`_
 
-Installation (Mac)
-------------------
+さらに助けが必要ならフォーラムを確認してください。 https://groups.google.com/forum/?fromgroups=#!forum/gitextensions
+
+Macへのインストール
+-------------------
 
 First we need to make sure you have latest mono version on your mac. This section will cover installation of mono 2.10.11 over a mac.
 
@@ -53,7 +56,8 @@ First we need to make sure you have latest mono version on your mac. This sectio
 $ mono --version  
 Mono JIT compiler version 2.10.11 (mono-2-10/2baeee2 Wed Jan 16 16:40:16 EST 2013)
 Copyright (C) 2002-2012 Novell, Inc, Xamarin, Inc and Contributors. www.mono-project.com
-   TLS:           normal
+
+	TLS:           normal
 	SIGSEGV:       normal
 	Notification:  kqueue
 	Architecture:  x86
@@ -70,201 +74,248 @@ $ mono GitExtensions.exe
 
 This is the minimal setup you need in order to run GitExtensions
 
+.. index::
+   single: Getting Started; 設定
 
-Settings
---------
+設定
+----
 
-All settings will be verified when Git Extensions is started for the first time. If Git Extensions requires 
-any settings to be changed the settings dialog will be shown. All incorrect settings will be marked red. You 
-can ask Git Extensions to try to fix the setting for you by clicking on it.
+Git Extensionsの初回起動時にすべての設定が検証されます。
+いずれかの設定を変更する必要がある場合は、Git Extensionsの設定ダイアログが表示されます。
+修正する必要のある設定は赤い背景で表示されます。
+それをクリックすることで、Git Extensionsが修正するための設定画面を開きます。
+
+|
 
 .. image:: /images/settings/checklist.png
 
-All settings that are specific to Git Extensions will be stored in the Windows registry. The settings that 
-are used by Git are stored in the configuration files of Git. The global settings are stored in a file called 
-``.gitconfig`` in the user directory. The local settings are stored in the .git\config file of the repository.
+Git Extensions固有の設定は、すべてWindowsのレジストリに保存されます。
+Gitで使用される設定は、すべてGitの設定ファイルに保存されます。
+グローバルな設定は、ユーザーディレクトリの ``.gitconfig`` というファイルに保存されます。
+ローカル設定は、リポジトリの中の ``.git\config`` に保存されます。
+
+|
 
 .. image:: /images/settings/git.png
 
 
-The 'Git' tab contains the settings needed to access git repositories. The database will be accessed using external 
-tools. For Windows usually msysgit or cygwin are used. Git Extensions will try to configure these settings automatically.
+「Git」設定では、Gitのリポジトリにアクセスするために必要な設定を行います。
+データベースは外部のツールによってアクセスされます。
+Windowsの場合、通常はmsysgitかcygwinが使われます。
+Git Extensionは自動的にそれらの設定を構成しようとします。
 
-+-----------------------------------------+--------------------------------------------------------------------------+
-|Command to run git (git.cmd or git.exe)  | Needed for Git Extensions to run Git commands. Set the full command      |
-|                                         | used to run git (msysgit or cygwin).                                     |
-+-----------------------------------------+--------------------------------------------------------------------------+
-|Path to Linux tools                      | A few linux tools are used by Git Extensions. When msysgit is installed, |
-|                                         | these tools are located in the bin directory of msysgit.                 |
-+-----------------------------------------+--------------------------------------------------------------------------+
++----------------------------------------------+--------------------------------------------------------------------------+
+|gitの実行に使用するコマンド(git.cmdかgit.exe) | Git ExtensionsがGitコマンドを実行するために必要。                        |
+|                                              | (msysgitかcygwinの)gitコマンドのフルパスを指定します。                   |
++----------------------------------------------+--------------------------------------------------------------------------+
+|Linuxツールへのパス(shへのパス)               | Git ExtensionsはいくつかのLinuxツールを使用します。msysgitがインストール |
+|                                              | されている場合、これらのツールはmsysgitのbinディレクトリにあります。     |
++----------------------------------------------+--------------------------------------------------------------------------+
 
-The global configuration file used by git will be put in the home directory. On some systems the home directory is not set 
-or is pointed to a network drive. Git Extensions will try to detect the optimal setting for your environment. When there is 
-already a global git configuration file, this location will be used. If you need to relocate the home directory for git, 
-change this setting. Otherwise leave this setting on default.
+gitで使用されるグローバル設定ファイルはホームディレクトリに配置されます。
+いくつかのシステムではホームディレクトリが設定されていないか、ネットワークドライブ上に存在することがあります。
+Git Extensionsは使用されてる環境に合わせて最適な設定を検出しようとします。
+gitのグローバル設定ファイルが既に存在する場合は、それを使用します。
+git用にホームディレクトリを再設定する必要がある場合は、この設定を変更して下さい。
+それ以外の場合は、デフォルトの設定のままにしておきます。
+
+|
 
 .. image:: /images/settings/git_extensions.png
 
-The ‘Git Extension’ tab contains all settings needed for Git Extension to run properly. The path to git.cmd and git.exe can 
-be set here. This is only needed when these are not in the system path.
+「Git Extensions」設定ではGit Extensionsが正常に動作するために必要な設定を行います。
+git.cmdとgit.exeへのパスは、ここで設定することができます。
+これは、それらがシステムパスに含まれていない場合にのみ必要な設定です。
 
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Show stash count on status bar in browse window    | When you use the stash a lot, it can be useful to show the number of       |
-|                                                   | stashed items on the toolbar. This option causes serious slowdowns in large|
-|                                                   | repositories and is turned off by default.                                 |
+| 一時退避(stash)数をBrowse画面の                   | stashを多用している場合、stashされたアイテム数をツールバー上に表示するので |
+| ステータスバーに表示                              | 便利です。このオプションは大規模なリポジトリでは深刻な速度低下の           |
+|                                                   | 原因になるため、デフォルトではオフになっています。                         |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Use FileSystemWatcher to check if index is changed | Using the FileSystemWatcher to check index state improves the performance  |
-|                                                   | is some cases. Turn this off if you experience refresh problems in commit  |
-|                                                   | log.                                                                       |
+| FileSystemWatcherを使用して、                     | インデックスの状態を確認するのにFileSystemWatcherを使用することで、        |
+| インデックスが変更されたかチェックする            | パフォーマンスが改善されるケースがあります。                               |
+|                                                   | コミットログでリフレッシュの問題が出る場合はこのオプションをオフにします。 |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Show current working dir changes in revision graph | When enabled, two extra revisions are added to the revision graph. The     |
-|                                                   | first shows the current working directory status. The second shows the     |
-|                                                   | staged files. This option can cause slowdowns when browsing large          |
-|                                                   | repositories.                                                              |
+| 作業ディレクトリの変更をリビジョングラフ上に      | このオプションを有効にすると、リビジョングラフに追加で2つの状態が          |
+| 表示する                                          | 表示されます。1つは現在のワーキングディレクトリの状態を表示します。        |
+|                                                   | 2つ目はステージングエリアの状態を表示します。                              |
+|                                                   | 大規模なリポジトリをブラウジングする場合、このオプションは速度低下を       |
+|                                                   | 引き起こす可能性があります。                                               |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Limit number of commits that will be loaded in     | Git Extensions uses lazy loading to load the commit log. Lower this number |
-|list at start-up.                                  | to increase the start-up speed. Increase the number for faster scrolling.  |
+| 起動時に読み込むコミットの数                      | Git Extensionsはコミットログの読み込みに遅延ロードを行います。             |
+|                                                   | 起動速度を上げるためには、この数を減らします。                             |
+|                                                   | この数を増やすと、素早くスクロールできます。                               |
 |                                                   | Turn of revision graph for optimal result!                                 |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Close process dialog automatically when process is | When a process is finished, clause the process dialog automatically. Leave |
-|succeeded                                          | this option off if you want to see the result of processes. When a process |
-|                                                   | has been failed, the dialog will keep open.When a process is finished,     |
-|                                                   | clause the process dialog automatically. Leave this option off if you want |
-|                                                   | to see the result of processes. When a process has been failed, the dialog |
-|                                                   | will keep open.                                                            |
+| 処理に成功したときにダイアログを閉じる            | 処理が完了した時に、自動的にダイアログを閉じます。                         |
+|                                                   | 処理の結果を確認したい場合は、このオプションをオフにします。               |
+|                                                   | 処理に失敗した場合は、ダイアログは開いたままになります。                   |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Show Git command line dialog when executing process| Git Extensions uses command line tools to access the git database. In some |
-|                                                   | environments it might be useful to see the command line dialog when a      |
-|                                                   | process is executed.                                                       |
+| gitプロセス動作時にコンソールウィンドウを表示する | Git Extensionsはgitデータベースにアクセスするためにコマンドラインツールを  |	
+|                                                   | 使用します。一部の環境では、プロセス動作時にコマンドラインのダイアログを   |
+|                                                   | 見ることが役に立つかもしれません。                                         |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Follow renames in file history                     | Try to follow file renames in the file history.                            |
+| ファイルの歴史でファイル名の変更も追跡する        | ファイルの履歴でファイル名の変更も追跡しようとします。                     |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Revision graph quicksearch timeout [ms]            | The timeout used for the quicksearch feature in the revision graph. The    |
-|                                                   | quicksearch will be enabled when you start typing and the revision graph is|
-|                                                   | focussed.                                                                  |
+| リビジョングリッドクイック検索のタイムアウト [ms] | リビジョングラフのクイック検索のタイムアウトを設定します。                 |
+|                                                   | リビジョングラフにフォーカスがあり、タイプを開始するとクイック検索が       |
+|                                                   | 有効になります。                                                           |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Smtp server for sending patches                    | Smtp server to use for sending patches.                                    |
+| パッチ送信用のSMTPサーバ                          | パッチの送信に使用するSMTPサーバを設定します。                             |
 +---------------------------------------------------+----------------------------------------------------------------------------+
+
+|
 
 .. image:: /images/settings/appearance.png
 
+「外観」設定
+
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Show relative date instead of full date            | Show relative date, e.g. 2 weeks ago, instead of full date.                |
+| 絶対日付の代わりに相対日付を表示する              | 絶対日付の代わりに相対日付(例：2週間前)を表示します。                      |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Get author image from gravatar.com                 | Whether or not retrieve the user avatar from gravatar.                     |
+| gravatar.comから著者のイメージを取得              | gravatarからユーザーのアバターを取得するかどうかを設定します。             |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Image size                                         | The display size of the user avatar.                                       |
+| 画像サイズ                                        | ユーザーのアバターの表示サイズを設定します。                               |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Cache images                                       | Long duration will do less resquest but will take more time to update      |
-|                                                   | envutual user's avatar changes.                                            |
+| 画像を [ N ] 日キャッシュ                         | 長い期間を設定するとリクエストは少なくなりますが、ユーザーのアバターの     |
+|                                                   | 変更を更新するまでにより長い時間がかかります。                             |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Clear image cache                                  | Clear the cached avatars.                                                  |
+| キャッシュのクリア                                | キャッシュされたアバターをクリアします。                                   |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Fonts                                              | Change the used font.                                                      |
+| フォント                                          | 使用するフォントを変更します。                                             |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Language                                           | Choose the language for the Git Extensions interface.                      |
+| 言語                                              | Git Extensionsのインターフェイスで使用する言語を選択します。               |
 +---------------------------------------------------+----------------------------------------------------------------------------+
-|Dictionary for spelling checker                    | Choose the dictionary to use for the spelling checker in the commit dialog.|
+| スペルチェックに使う辞書                          | コミットダイアログでのスペルチェックに使用する辞書を選択します。           |
 +---------------------------------------------------+----------------------------------------------------------------------------+
+
+|
 
 .. image:: /images/settings/colors.png
 
-In the color tab the following items can be set:
+「色」の設定では以下の項目を設定できます。
 
-+-----------------------+-------------------------------------------------------------------------------------------+
-|Revision graph colors  | The colors that are used in the revision graph.                                           |
-+-----------------------+-------------------------------------------------------------------------------------------+
-|Difference view colors | The colors that are used to mark changes.                                                 |
-+-----------------------+-------------------------------------------------------------------------------------------+
-|Application Icon       | The color of the application icon. This is useful for recognising various open instances. |
-+-----------------------+-------------------------------------------------------------------------------------------+
++-------------------------------+-----------------------------------------------------------------------------------------------+
+| リビジョングラフ              | リビジョングラフで使用する色を設定します。                                                    |
++-------------------------------+-----------------------------------------------------------------------------------------------+
+| Diff                          | 変更箇所を示すために使用する色を設定します。                                                  |
++-------------------------------+-----------------------------------------------------------------------------------------------+
+| アプリケーションアイコン      | アプリケーションアイコンの色を設定します。                                                    |
+|                               | アプリケーションを複数開いている時に認識しやすくなります。                                    |
++-------------------------------+-----------------------------------------------------------------------------------------------+
+
+|
 
 .. image:: /images/settings/start_page.png
 
-The items on the Start Page can be edited. In this tab you can add and remove categories. Per category you can either configure 
-a RSS feed or add repositories. The order can be changed using the context menus in the Start Page.
+スタートページに表示する項目を編集することができます。
+このページでは、カテゴリの追加や削除ができます。
+カテゴリごとにRSSのフィードを設定したり、リポジトリを追加したりできます。
+スタートページ上でコンテキストメニューを使用することで順序の変更ができます。
+
+|
 
 .. image:: /images/settings/global_settings.png
 
-In the ``Global settings`` tab some global Git settings can be set.
+「グローバル設定」ページではいくつかのグローバルなGitの設定を行うことができます。
 
-+------------------+-------------------------------------------------------------------------------------------------------+
-|User name         | User name shown in commits and patches.                                                               |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|User email        | User email shown in commits and patches.                                                              |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|Editor            | Editor that git.exe opens (e.g. for editing commit message). This is not used by Git Extensions, only |
-|                  | when you call git.exe from the command line. By default Git will use the command line text editor vi. |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|Mergetool         | Merge tool used to solve merge conflicts. Git Extensions will search for common merge tools on your   |
-|                  | system.                                                                                               |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|Path to mergetool | Path to merge tool. Git Extensions will search for common merge tools on your system.                 |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|Mergetool command | Command that Git uses to call the merge tool. Git Extensions will try to set this automatic when a    |
-|                  | merge tool is chosen. This setting can be left empty when Git supports the mergetool (e.g. kdiff3).   |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|DiffTool          | DiffTool that is used.                                                                                |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|Path to DiffTool  | The path to the difftool.                                                                             |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|DiffToolCommand   | Command that Git uses to start the DiffTool. This setting should only be filled when Git doesn't      |
-|                  | support the mergetool.                                                                                |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|Line endings      | Choose how git should handle line endings.                                                            |
-+------------------+-------------------------------------------------------------------------------------------------------+
-|Encoding          | Choose the encoding you want GitExtensions to use.                                                    |
-+------------------+-------------------------------------------------------------------------------------------------------+
+
++------------------------+-------------------------------------------------------------------------------------------------+
+| ユーザ名               | コミットやパッチに表示するユーザ名を設定します。                                                |
++------------------------+-------------------------------------------------------------------------------------------------+
+| ユーザのメールアドレス | コミットやパッチに表示するユーザのメールアドレスを設定します。                                  |
++------------------------+-------------------------------------------------------------------------------------------------+
+| エディタ               | git.exeが開くエディタを設定します。(例：コミットメッセージを編集するため)                       |
+|                        | コマンドラインでgit.exeから呼び出される場合にのみ使用され、Git Extensionsからは使用しません。   |
+|                        | デフォルトでは、Gitはコマンドラインのテキストエディタであるviを使用します。                     |
++------------------------+-------------------------------------------------------------------------------------------------+
+| マージツール           | マージの際のコンフリクトを解決する際に使用するマージツールを設定します。                        |
+|                        | Git Extensionsは、システムから通常利用されるマージツールを検索します。                          |
++------------------------+-------------------------------------------------------------------------------------------------+
+| マージツールのパス     | マージツールのパスを設定します。                                                                |
+|                        | Git Extensionsは、システムから通常利用されるマージツールを検索します。                          |
++------------------------+-------------------------------------------------------------------------------------------------+
+| マージツールのコマンド | Gitがマージツールを呼び出す際に使用するコマンドを設定します。                                   |
+|                        | マージツールが設定されると、Git Extensionsは自動的に設定しようとします。                        |
+|                        | Gitがサポートしているマージツール(例：kdiff3)の場合、この設定は空のままにすることができます。   |
++------------------------+-------------------------------------------------------------------------------------------------+
+| Diffツール             | 使用するDiffツールを設定します。                                                                |
++------------------------+-------------------------------------------------------------------------------------------------+
+| Diffツールのパス       | Diffツールのパスを設定します。                                                                  |
++------------------------+-------------------------------------------------------------------------------------------------+
+| Diffツールのコマンド   | GitがDiffツールを呼び出す際に使用するコマンドを設定ます。                                       |
+|                        | Gitがマージツールをサポートしていない場合、Diffツールのコマンドを設定するべきです。             |
++------------------------+-------------------------------------------------------------------------------------------------+
+| 改行の扱い             | Gitによる改行コードの扱いを設定します。                                                         |
++------------------------+-------------------------------------------------------------------------------------------------+
+| エンコード             | Git Extensionsで使用したいエンコードを選択してください。                                        |
++------------------------+-------------------------------------------------------------------------------------------------+
+
+|
 
 .. image:: /images/settings/ssh.png
 
-In the tab ``SSH`` you can configure the SSH client you want Git to use. Git Extensions is optimized for PuTTY. Git Extensions 
-will show command line dialogs if you do not use PuTTY and user input is required. Git Extensions can load SSH keys for PuTTY 
-when needed.
+「SSH」ページでは、Gitで使用するSSHクライアントを設定できます。
+Git ExtensionsはPuTTYに最適化されています。
+PuTTYを使用しない場合にユーザの入力が必要な場面で、Git Extensionsはコマンドラインのダイアログを表示します。
+Git Extensionsは必要に応じてPuTTYで使用するSSH鍵を読み込むことができます。
 
-Start Page
-----------
+.. index::
+   single: Getting Started; スタートページ
 
-The start page contains the most common tasks, recently opened repositories and favourites. The left side of the start page 
-is static. The other items can be edited.
+スタートページ
+--------------
+
+スタートページには最も一般的なタスク、最近開いたリポジトリ、そしてお気に入りが表示されます。
+スタートページの左側は静的なものです。
+その他の項目については編集することができます。	
 
 .. image:: /images/start_page.png
 
-Repositories can be moved to favourites using the context menu. Choose edit to add new repositories to any category.
+リポジトリは、コンテキストメニューを使用することでお気に入りに移動することができます。
+カテゴリに新しいリポジトリを追加するには、コンテキストメニューの「編集」を選択します。
 
 .. image:: /images/move_to_category.png
 
-Clone existing repository
--------------------------
+.. index::
+   single: Getting Started; 既存のリポジトリをクローンする
 
-You can clone an existing repository using the ``Clone`` menu option. You can choose the repository type to clone to. For 
-personal use you need to choose ``Personal repository``. For a central or public repository, choose ``Central repository``. A 
-central repository does not have a working directory.
+既存のリポジトリをクローンする
+------------------------------
+
+メニューオプションの ``リポジトリのクローン`` を使用することで、既存のリポジトリをクローンできます。
+クローンするリポジトリの種類を選択することができます。
+個人的に利用する場合には、 ``個人リポジトリ`` を選択する必要があります。
+中央リポジトリ、もしくは公開するリポジトリの場合には、 ``作業ディレクトリを持たない中央リポジトリ`` を選択します。
+中央リポジトリには作業ディレクトリがありません。
 
 .. image:: /images/clone.png
 
-The repository you want to clone could be on a network share or could be a repository that is accessed through an internet 
-or intranet connection. Depending on the protocol (http or ssh) you might need to load a SSH key into PuTTY.
+クローンするリポジトリは、ネットワーク共有されているかもしれないし、インターネット／イントラネットを介してアクセスされるかもしれない。
+プロトコル(httpやssh)によっては、PuTTYにSSH鍵を読み込ませる必要があるかもしれません。
 
-There are two different types of repositories you can create when making a clone. A personal repository contains the complete 
-history and also contains a working copy of the source tree. A central repository is used as a public repository where 
-developers push there changes they want to share with others to. A central repository contains the complete history but to not 
-have a working directory like personal repositories.
+クローンする際に作成できるリポジトリには2つの種類があります。
+個人リポジトリには、完全な履歴と、ソースツリーの作業コピーがともに含まれています。
+中央リポジトリは、開発者が他の人と共有したい変更内容をpushするための公開リポジトリとして使われます。
+中央リポジトリには、完全な履歴は含まれますが、個人リポジトリのような作業ディレクトリは含まれません。
 
-Create new repository
----------------------
+.. index::
+   single: Getting Started; 新しいリポジトリを作成する
 
-When you do not want to work on an existing project, you can create your own repository. Choose the menu option 
-``Init new repository`` to create a new repository.
+新しいリポジトリを作成する
+--------------------------
+
+既存のリポジトリで作業したくない場合、独自のリポジトリを作成することができます。
+新しいリポジトリを作成するには、メニューオプションから  ``リポジトリの作成`` を選択します。
 
 .. image:: /images/new_repository.png
 
-You can choose to create a Personal repository or a Central repository.
+個人リポジトリを作成するか、中央リポジトリを作成するかを選択できます。
 
-A personal repository looks the same as a normal working directory but has a directory named ``.git`` on root level 
-containing the version history. This is the most common repository.
+個人リポジトリは、通常の作業ディレクトリと同じ様に見えますが、履歴を記録するための ``.git`` というディレクトリがルートレベルに存在します。
+これが最も一般的なリポジトリです。
 
-Central repositories only contain the version history. Because a central repository has no working directory you cannot 
-checkout a revision in a central repository. It is also impossible to merge or pull changes is a central repository. This 
-repository type can be used as a public repository where developers can push changes to or pull changes from.
-
+中央リポジトリは、履歴情報のみを格納しています。
+中央リポジトリは作業ディレクトリを持っていないため、中央リポジトリでリビジョンをチェックアウトすることはできません。
+中央リポジトリでは、変更のマージやプルを行うこともできません。
+この種のリポジトリは、開発者が変更をプッシュしたり、変更をプルしたりするための公開リポジトリとして使用されます。
