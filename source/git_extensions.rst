@@ -1,26 +1,26 @@
 Git Extensions
 ==============
 
-Git Extensions is a toolkit aimed to make working with Git under Windows more intuitive
-(note that Git Extensions is also available on Linux using Mono). The shell 
-extension will integrate in Windows Explorer and presents a context menu on files and directories. 
-There is also a Visual Studio plug-in to use Git from the Visual Studio IDE. The source code of Git 
-Extensions is located here: https://github.com/gitextensions/gitextensions
+Git Extensionsは、Windows環境下でより直感的にGitを使用することを目的としたツールキットです
+（注意：Linux環境でもMonoを使用することによって利用可能です）。
+シェル拡張はWindowsのExplorerに統合され、ファイルやディレクトリのコンテキストメニューとして表示されます。
+Visual StudioのIDEからGitを使用するためのプラグインにもなります。
+Git Extensionsのソースコードは次の場所にあります。 https://github.com/gitextensions/gitextensions
 
-Features
---------
+特徴
+----
 
-* Windows Explorer integration for Git
-* Visual Studio (2005/2008/2010/2012) plug-in for Git
-* Feature rich user interface for Git
-* Single installer installs Git, Git Extensions and the merge tool KDiff3 
-* 32bit and 64bit support
-* Runs under Linux using `Mono <http://www.mono-project.com>`_
+* Windows Explorerとの統合
+* Visual Studio (2005/2008/2010/2012) 用のGitプラグイン
+* 高機能なユーザーインターフェイス
+* 単一のインストーラーでGit、Git Extensions、マージツール(KDiff3)をインストール
+* 32bit/64bitのサポート
+* `Mono <http://www.mono-project.com>`_ を使用することでLinux環境下でも動作
 
-Video tutorials
----------------
+ビデオチュートリアル
+--------------------
 
-There are video tutorials for some basic functions on YouTube.
+基本的な機能については、YouTubeにビデオチュートリアルが公開されています。
 
 #. `Clone <http://www.youtube.com/watch?v=TlZXSkJGKF8>`_
 #. `Commit changes <http://www.youtube.com/watch?v=B8uvje6X7lo>`_
