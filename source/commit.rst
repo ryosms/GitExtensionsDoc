@@ -1,100 +1,121 @@
 Commit
 ======
 
-A commit is a set of changes with some extra information. Every commit contains the follow information:
+コミットは、いつくかの追加の情報を含んだ、変更をまとめたものです。
+すべてのコミットは以下の情報を含んでいます。
 
-* Changes
-* Committer name and email
-* Commit date
-* Commit message
-* Cryptographically strong SHA1 hash
+* 変更
+* コミッターの名前とメールアドレス
+* コミットした日時
+* コミットメッセージ
+* 強く暗号化されたSHA1ハッシュ
 
-Each commit creates a new revision of the source. Revisions are not tracked per file; each change creates a new 
-revision of the complete source. Unlike most traditional source control management systems, revisions are not named 
-using a revision number. Each revision is named using a SHA1, a 41 long characters cryptographically strong hash. 
+各コミットにより、ソースの新しいリビジョンが作成されます。
+リビジョンはファイルごとに追跡はされず、各変更によって完全なソースの新しいリビジョンが作成されます。
+伝統的なソース管理システムとは異なり、リビジョンはリビジョン番号では識別されません。
+各リビジョンは、SHA1という強く暗号化された41文字のハッシュ値によって識別されます。
 
-Commit changes
---------------
+.. index::
+   single: Commit; 変更をコミットする
 
-Changes can be committed to the local repository. Unlike most other source control management systems you do not need to 
-checkout files before you start editing. You can just start editing files, and review all the changes you made in the commit 
-dialog later. When you open de commit dialog, all changes are listed in the top-left. 
+変更をコミットする
+------------------
+
+変更はローカルリポジトリにコミットできます。
+他の一般的なソース管理システムとは異なり、編集を開始する前にファイルをチェックアウトをする必要はありません。
+変更を開始するだけで、行われたすべての変更は後からコミットダイアログで確認することができます。
+コミットダイアログを開くと、すべての変更は画面左上部に列挙されます。
 
 .. image:: /images/commit_dialog.png
 
-There are three kinds of changes:
+変更には3種類の状態があります。
 
 +----------+----------------------------------------------------------------------------------------------------------------+
-|Untracked | This file is not yet tracked by Git. This is probably a new file, or a file that has not been committed to Git |
-|          | before.                                                                                                        |
+|Untracked | このファイルはまだGitに追加されていません。                                                                    |
+|          | これはおそらく、新しいファイルか、もしくは以前にGitにコミットされたことがないファイルです。                    |
 +----------+----------------------------------------------------------------------------------------------------------------+
-|Modified  | This file is modified since the last commit.                                                                   |
+|Modified  | このファイルは最後にコミットされた以降に変更されています。                                                     |
 +----------+----------------------------------------------------------------------------------------------------------------+
-|Deleted   | This file has been deleted.                                                                                    |
+|Deleted   | このファイルは削除されています。                                                                               |
 +----------+----------------------------------------------------------------------------------------------------------------+
 
-When you rename or move a file Git will notice that this file has been moved, but currently Git Extensions does not show 
-this in the commit dialog. Occasionally you will need to undo the file change. This can be done in the context menu of any 
-unstaged file.
+ファイル名を変更したり、ファイルを移動したりすると、Gitはファイルが移動されたことを検知しますが、今のところGit Extensionsはそれらをコミットダイアログに表示しません。
+ファイルの変更を元に戻したい場合があるでしょう。
+ステージングされていないファイルのコンテキストメニューから行うことができます。
 
 .. image:: /images/reset_changes.png
 
-During your initial commit there are probably lots of files you do not want to be tracked. You can ignore these files by not 
-staging them, but they will show every time. You could also add them to the .gitignore file of you repository. Files that are 
-in the ``.gitignore`` file will not show up in the commit dialog again. You can open the ``.gitignore`` editor from the menu 
-``Working dir changes`` by selecting ``Edit ignored files``.
+最初のコミットまでに、おそらく、追跡されたくないたくさんのファイルがあるでしょう。
+それらのファイルは、ステージングしないことによって無視することもできますが、毎回表示されてしまいます。
+リポジトリ中の .gitignore というファイルにそれらを追加することもできます。
+``.gitignore`` に追加されたファイルは、コミットダイアログに再び表示されることはありません。
+コミットダイアログの ``作業ディレクトリの変更点`` メニューで ``無視されたファイルを編集する`` を選択することで、 ``.gitignore`` のエディターを開くことができます。
 
 .. image:: /images/show_untracked.png
 
-You need to stage the changes you want to commit by pressing the ‘Stage selected files’ button. You also need to stage deleted 
-files because you stage the change and not the file. When all the changes you want to commit are staged, enter a commit message 
-and press the commit button.
+コミットしたいファイルを ``ステージに追加`` ボタンを押してステージングする必要があります。
+ステージングするのは、ファイルではなく変更であるため、削除したファイルもステージングする必要があります。
+コミットしたいすべての変更をステージングしたら、コミットメッセージを入力し、コミットボタンを押します。
 
 .. image:: /images/commit_dialog_commit.png
 
-It is also possible to add files to you last commit using the ``Amend to last commit`` button. This can be very useful when you 
-forgot some changes. This function rewrites history; it deletes the last commit and commits it again including the added 
-changes. Make sure you only use ``Amend to last commit`` when the commit is not yet published to other developers.
+``コミットのやり直し`` を使用することにより、最後のコミットにファイルを追加することもできます。
+これは、いくつかの変更を忘れてしまった時に非常に便利です。
+この操作は歴史を書き換えます。最後のコミットを消し、追加の変更を含めて再度コミットを行います。
+そのコミットが他の開発者へ公開されていない場合にのみ ``コミットのやり直し`` を使用するように気をつけてください。
 
-There is a build in spelling checker that checks the commit message. Incorrect spelled words are underlined with a red wave line. 
-By right-clicking on the misspelled word you can choose the correct spelling or one of the other options.
+コミットメッセージをチェックするための、スペルチェッカーの機能があります。
+スペルを間違っている単語は、赤の波線で下線が引かれます。
+スペルをミスしている単語上で右クリックすることにより、正しいスペルや、その他のオプションを選択したりできます。	
 
 .. image:: /images/commit_dialog_spellchecker.png
 
-Git Extensions installs a number of dictionaries by default. You can choose another language in the context menu of the 
-spelling checker or in the settings dialog. To add a new spelling dictionary add the dictionary file to the ``Dictionaries`` 
-folder inside the Git Extensions installation folder.
+Git Extensionsは、デフォルトで多くの辞書をインストールします。
+スペルチェッカーのコンテキストメニューや、設定のダイアログで他の辞書を選択することができます。
+新しいスペル辞書を追加するには、Git Extensionsのインストールディレクトリ中の ``Dictionaries`` フォルダに辞書ファイルを追加します。
 
 .. image:: /images/commit_dialog_language.png
 
-Cherry pick commit
-------------------
+.. index::
+   single: Commit; コミットのCherry pick
 
-A commit can be recommitted by using the cherry pick function. This can be very useful when you want to make the same change 
-on multiple branches.
+コミットのCherry pick
+---------------------
+
+コミットは、チェリーピック機能を使用して、再コミットすることができます。
+これは、同じ変更を、複数のブランチに適用する場合に非常に便利です。
 
 .. image:: /images/cherry_pick.png
 
-Revert commit
--------------
+.. index::
+   single: Commit; コミットのRevert
 
-A commit cannot be deleted once it is published. If you need to undo the changes made in a commit, you need to create a new 
-commit that undoes the changes. This is called a revert commit.
+コミットのRevert
+----------------
+
+コミットが公開されると、削除することはできません。
+コミットによる変更をやり直す必要がある場合、その変更を打ち消す新しいコミットを作成する必要があります。
+これはコミットの ``Revert`` と呼ばれます。
 
 .. image:: /images/revert_commit.png
 
-Stash changes
--------------
+.. index::
+   single: Commit; 変更のStash
 
-If there are local changes that you do not want to commit yet and not want to throw away either, you can temporarily stash 
-them. This is useful when working on a feature and you need to start working on something else for a few hours. You can 
-stash changes away and then reapply them to your working dir again later. Stashes are typically used for very short periods. 
+変更のStash
+-----------
+
+まだコミットしたくないローカルでの変更があり、それを捨てたくない場合、それらを一時的にstashすることができます。
+featureで作業中に、何か別の作業を数時間行わなければならない場合に便利です。
+変更をstashしておいて、後から再度ワーキングディレクトリに適用することができます。
+Stashは、一般的には非常に短い時間について使用されます。
 
 .. image:: /images/stash_dialog.png
 
-You can create multiple stashes if needed. Stashes are shown in the commit log with the text ``[stash]``.
+必要であれば、複数のStashを作成することができます。
+Stashは、コミットログに ``[stash]`` というテキストと共に表示されます。
 
 .. image:: /images/commit_log_stash.png
 
-The stash is especially useful when pulling remote changes into a dirty working directory. If you want a more permanent 
-stash, you should create a branch.
+Stashは、変更の入った(dirty)作業ディレクトリに、リモートの変更をpullしてくる際に特に有効です。
+もし、より恒久的なstash領域が必要な場合、ブランチを作るのがよいでしょう。
