@@ -1,3 +1,6 @@
+.. index::
+   single: Git Extensions
+
 Git Extensions
 ==============
 
@@ -6,6 +9,9 @@ Git Extensionsは、Windows環境下でより直感的にGitを使用するこ�
 シェル拡張はWindowsのExplorerに統合され、ファイルやディレクトリのコンテキストメニューとして表示されます。
 Visual StudioのIDEからGitを使用するためのプラグインにもなります。
 Git Extensionsのソースコードは次の場所にあります。 https://github.com/gitextensions/gitextensions
+
+.. index::
+   single: Git Extensions; 特徴
 
 特徴
 ----
@@ -16,6 +22,9 @@ Git Extensionsのソースコードは次の場所にあります。 https://git
 * 単一のインストーラーでGit、Git Extensions、マージツール(KDiff3)をインストール
 * 32bit/64bitのサポート
 * `Mono <http://www.mono-project.com>`_ を使用することでLinux環境下でも動作
+
+.. index::
+   single: Git Extensions; ビデオチュートリアル
 
 ビデオチュートリアル
 --------------------

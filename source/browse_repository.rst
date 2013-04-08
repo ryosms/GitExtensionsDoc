@@ -1,3 +1,6 @@
+.. index::
+   single: Browse Repository
+
 Browse Repository
 =================
 

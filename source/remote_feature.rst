@@ -1,3 +1,6 @@
+.. index::
+   single: Remote feature
+
 Remote feature
 ==============
 

@@ -1,3 +1,6 @@
+.. index::
+   single: Branch
+
 Branches
 ========
 
