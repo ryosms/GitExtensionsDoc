@@ -1,12 +1,16 @@
+.. index::
+   single: Notes
+
 Notes
 =====
 
-Notes can be added to a commit. Notes will be stored separately and will not be pushed. To add a new note 
-choose ``add notes`` in the context menu of the commit information box.
+コミットには注釈を加えることができます。
+注釈は別に保存され、pushされることはありません。
+新しい注釈を加えるには、 コミット情報のコンテキストメニューから ``注釈を追記`` を選択します。
 
 .. image:: /images/add_note_context_menu.png
 
-The editor that has been configured in the settings dialog will be used to enter or edit the notes. The Git 
-Extensions editor is advised. 
+設定ダイアログで指定されているエディタは、注釈の入力や編集で使用されます。
+Git Extensionsのエディタをお勧めします。
 
 .. image:: /images/note_editor.png
