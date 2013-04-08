@@ -1,33 +1,43 @@
 Tag
 ====
 
-Tags are used to mark a specific version. Usually a tag will not be moved anymore. The image below shows 
-the commit log of Git Extensions with two tags indicating version [1.08] and [1.06].
+タグは、特定のバージョンをマークするのに使われます。
+通常は、タグが移動されることはありません。
+下の画像は、[1.08]と[1.06]のタグが打たれた、Git Extensionsのコミットログのイメージです。
 
 .. image:: /images/tag.png
 
-Create tag
+.. index::
+   single: Tag; タグの作成
+
+タグの作成
 ----------
 
-In Git Extensions you can tag a revision by choosing ``Create new tag`` in the commit log context menu. A dialog 
-will prompt for the name of the tag. You can also choose ``Create tag`` from the ``Commands`` menu, which will show 
-a dialog to choose the revision and enter the tag name.
+Git Extensionsでは、コミットログのコンテキストメニューから ``タグの作成`` を選択することで、リビジョンにタグを付けることができます。
+タグの名前を付けるためにダイアログが表示されます。
+``Gitコマンド`` メニューからも ``タグの作成`` を選択することができます。
+こちらは、タグを付けるリビジョンを選択して名前を入力するためのダイアログが開きます。
 
 .. image:: /images/new_tag.png
 
-Once a tag is created, it cannot be moved again. You need to delete the tag and create it again to move it.
+タグが作成されると、それを変更することはできません。
+変更するには、タグを削除して再度作成する必要があります。
 
-Delete tag
+.. index::
+   single: Tag; タグの削除
+
+タグの削除
 ----------
 
-For some operation it is very useful to create tags for temporary usage. Git uses SHA1 hashes to name each commit. 
-When you want to merge with an unnamed branch it is good practise to tag the unnamed branch, merge with the tag and then 
-delete the tag again.
+いくつかの操作をするために、一時的なタグを使用するのは非常に便利です。
+Gitは各コミットを識別するために、SHA1ハッシュを使用します。
+無名ブランチにタグを付けるのはいい選択です。
+無名ブランチをマージする際に、タグを使用してマージしてから、そのタグを削除するのです。
 
 .. image:: /images/delete_tag.png
 
 Re-Tag?
 ^^^^^^^
 
-Read about "What should you do when you tag a wrong commit and you would want to re-tag?" here:
+次の "What should you do when you tag a wrong commit and you would want to re-tag?" という記事を読みましょう:
 https://www.kernel.org/pub/software/scm/git/docs/git-tag.html#_on_re_tagging
