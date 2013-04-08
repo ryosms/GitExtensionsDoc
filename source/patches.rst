@@ -1,32 +1,39 @@
 Patches
 =======
 
-Every commit contains a change-set, a commit date, the committer name, the commit message and a cryptograph SHA1 
-hash. Local commits can be published by pushing it to a remote repository. To be able to push you need to have sufficient 
-rights and you need to have access to the remote repository. When you cannot push directly you can create patches. 
-Patches can be e-mailed to someone with access to the repository. Each patch contains an entire commit including the commit 
-message and the SHA1.
+全てのコミットには、変更内容、コミット日時、コミッターの名前、コミットメッセージ、そして、暗号化されたSHA1ハッシュなどが含まれます。
+ローカルのコミットは、リモートのリポジトリに対してpushすることによって公開できます。
+pushするには、リモートリポジトリへのアクセス権と、その他必要な権限を保有している必要があります。
+直接pushできない場合には、パッチを作成することができます。
+パッチはリポジトリへのアクセス権を持つ人に、メールで送ることができます。
+各パッチには、コミットメッセージやSHA1などを含む、完全なコミットが入っています。
 
 .. image:: /images/patche.png
 
-Create patch
+.. index::
+   single: Patches; パッチの作成
+
+パッチの作成
 ------------
 
-Format a single patch or patch series using the format patch dialog. You need to select the newest commit first and then 
-select the oldest commit using ctrl-click. You can also select an interrupted patch series, but this is not recommended 
-because the files will not be numbered.
+パッチの作成ダイアログを使用して、単一のパッチや、パッチセットを作成することができます。
+まず、最新のコミットを選択しておいてから、Ctrlクリックを使用して古いコミットを選択します。
+分断したパッチセットを選択することもできますが、ファイルには番号が振られないため、これはおすすめしません。
 
 .. image:: /images/patche_dialog.png
 
-When the patches are created successfully the following dialog will appear.
+パッチの作成が成功すると、以下のダイアログが表示されます。
 
 .. image:: /images/patche_dialog_result.png
 
-Apply patches
--------------
+.. index::
+   single: Patches; パッチの適用
 
-It is possible to apply a single patch file or all patches in a directory. When there are merge conflicts applying the patch 
-you need to resolve them before you can continue. Git Extensions will help you applying all patches by marking the next 
-recommended step.
+パッチの適用
+------------
+
+単一のパッチファイルを適用したり、ディレクトリ中の全パッチを適用することも可能です。
+パッチの適用中に競合が発生した場合、続行する前に解消する必要があります。
+Git Extensionsは、次の推奨手順を提示するので、全パッチの適用に役立ちます。
 
 .. image:: /images/apply_patche.png
