@@ -4,129 +4,158 @@ Branches
 .. image:: /images/branch.png
     :align: right
 
-Branches are used to commit changes separate from other commits. It is very common to create a branch when you 
-start working on a feature and you are not sure if this feature will be finished in time for the next release. The 
-image on the right illustrates a branch created on top of commit B. 
+ブランチは、他のコミットとは切り離した変更をコミットする際に使われます。
+次回のリリースに間に合うかどうかが不明な、ある機能についての作業を開始する時にブランチを作成するのが一般的です。
+右の画像は、ブランチをBのコミット時点で作成したことを示しています。
 
-In Git branches are created very often. Creating a branch is very easy to do and it is recommended to create a branch 
-very often. In fact, when you make a commit to a cloned repository you start a new branch. I will explain this in the 
-pull chapter.
+Gitでは、ブランチは非常に頻繁に作成されます。
+ブランチを作成するのは非常に簡単であり、頻繁にブランチを作成することは推奨されています。
+実際、リポジトリをクローンしてコミットを行う場合に新しいブランチを作ります。
+このことについてはpullの章で説明します。
 
-You can check on what branch you are working in the toolbar.
+どのブランチで作業しているのかは、ツールバーで確認できます。
 
 .. image:: /images/branch_name.png
 
-Create branch
--------------
+.. index::
+   single: Branch; ブランチの作成
 
-In Git Extensions there are multiple ways to create a new branch. In the image below I create a new branch from the 
-context menu in the commit log. This will create a new branch on the revision that is selected.
+ブランチの作成
+--------------
+
+Git Extensionsで新しいブランチを作成するには、複数の方法があります。
+下の画像では、コミットログのコンテキストメニューから新しいブランチを作成しています。
+これは、選択されたリビジョンから新しいブランチを作成します。
 
 .. image:: /images/new_branch.png
 
-I will create a new branch called ``Refactor``. In this branch I can do whatever I want without considering others. 
-In the ``Create branch`` dialog there is a checkbox you can check if you want to checkout this branch immediate after 
-the branch is created.
+``Refactor`` という名前のブランチを作成します。
+このブランチでは、他の人の作業を考慮せずに作業することができます。
+ブランチを作成してすぐにチェックアウトするオプションを指定するチェックボックスが ``ブランチの作成`` ダイアログにあります。
 
 .. image:: /images/create_branch_dialog.png
 
-When the branch is created you will see the new branch ``Refactor`` in the commit log. If you chose to checkout this 
-branch the next commit will be committed to the new branch. 
+ブランチを作成すると、コミットログに ``Refactor`` という新しいブランチが表示されます。
+このブランチをチェックアウトすることを選択した場合、次回以降のコミットは新しいブランチに対してコミットされます。
 
 .. image:: /images/refactor_branch.png
 
-Creating branches in Git requires only 41 bytes of space in the repository. Creating a new branch is very easy and is 
-very fast. The complete work flow of Git is optimized for branching and merging.
+Gitでのブランチの作成には、リポジトリ中でたったの41バイトしかスペースを使用しません。
+新しいブランチの作成は、とても簡単で、非常に高速です。
+Gitのワークフローは、ブランチとマージに最適化されています。
 
-Orphan branches
-^^^^^^^^^^^^^^^
-In special cases it is helpful to have orphan branches (see for example https://www.google.com/search?q=why+use+orphan+branches+in+git).
-Check the "Create orphan" checkbox to create an orphan branch (``--orphan`` option in git).
+.. index::
+   single: Branch; 独立したブランチ
 
-The newly created branch will have no parent commits.
+独立したブランチ
+^^^^^^^^^^^^^^^^
 
-The option "Clear working dir and index" (``git rm -rf``) is active by default. So the working dir and index will be cleared.
-If you uncheck the last option then the working dir and index will not be touched.
+特別なケースでは、独立したブランチを作成すると便利です。
+(例えば、次の検索結果を確認してください。 https://www.google.com/search?q=why+use+orphan+branches+in+git )
+``Orphan`` にチェックを入れることで、独立したブランチを作成できます。(gitコマンドでは ``--orphan`` オプション)
 
-Checkout branch
----------------
+新しく作成されたブランチは、親コミットを持ちません。
 
-You can switch from the current branch to another branch using the checkout command. Checkout a branch sets the current 
-branch and updates all sources in the working directory. Uncommitted changes in the working directory can be overwritten, 
-make sure your working directory is clean.
+``Clear`` (Remove files from the working tree and from the index)オプション(``git rm -rf``)はデフォルトで有効になっています。
+そのため、作業ディレクトリとインデックスはクリアされます。
+もし、そのオプションを外せば、作業ディレクトリとインデックスはそのままになります。
+
+.. index::
+   single: Branch; ブランチのチェックアウト
+
+ブランチのチェックアウト
+------------------------
+
+checkoutコマンドを使用することで、現在のブランチから別のブランチに切り替えることができます。
+ブランチをチェックアウトすると、現在のブランチを切り替え、作業ディレクトリ中のファイルを更新します。
+作業ディレクトリ内でコミットされていない変更は上書きされる可能性があるので、作業ディレクトリがクリーンであることを確認してください。。
 
 .. image:: /images/checkout_branch.png
 
-Merge branches
---------------
+.. index::
+   single: Branch; ブランチのマージ
 
-In the image below there are two branches, ``[Refactor]`` and ``[master]``. We can merge the commits from the master branch 
-into the Refactor. If we do this, the Refactor branch will be up to date with the master branch, but not the other way around. 
-As long as we are working on the Refactor branch we cannot tough the master branch itself. We can merge the sources of 
-master into our branch, but cannot make any change to the master branch.
+ブランチのマージ
+----------------
+
+下の画像には、``[Refactor]`` と ``[master]`` という2つのブランチがあります。
+masterブランチからRefactorブランチにコミットをマージすることができます。
+これを行った場合、Refactorブランチはmasterブランチの内容で更新されますが、その逆はありません。
+Refactorブランチで作業してる限り、masterブランチそのものに手を加えることはできません。
+masterブランチのソースを現在のブランチにマージすることはできますが、masterブランチには変更を加えることはできません。
 
 .. image:: /images/merge1.png
 
-To merge the Refactor branch into the master branch, we need to switch to the master branch first. 
+Refactorブランチをmasterブランチにマージするためには、まずmasterブランチに切り替える必要があります。
 
 .. image:: /images/merge2.png
 
-Once we are on the master branch we can choose merge by choosing ``Merge branches`` from the ``Commands`` menu. In the merge 
-dialog you can check the branch you are working on. After selected the branch to merge with, click the ``Merge`` button.
+masterブランチに切り替え後、 ``Gitコマンド`` のメニューから ``ブランチのマージ`` を選択することでマージを行えます。
+マージダイアログでは、現在の作業ブランチを確認することができます。
+マージしたいブランチを選択後、 ``マージ`` ボタンをクリックします。
 
 .. image:: /images/merge_dialog.png
 
-After the merge the commit log will show the new commit containing the merge. Notice that the Refactor branch is not changed 
-by this merge. If you want to continue working on the Refactor branch you can merge the Refactor branch with master. You could 
-also delete the Refactor branch if it is not used anymore.
+マージ後、コミットログには新しいマージコミットが表示されます。
+このマージによって、Refactorブランチには変更が加えられていないことに注意して下さい。
+Refactorブランチでの作業を続けたい場合、masterブランチをRefactorブランチにマージすることもできます。
+Refactorブランチが不要になったのであれば、削除することもできます。
 
 .. image:: /images/merge3.png
 
 .. note::
 
-    When you need to merge with on unnamed branch you can use a tag to give it a temporary name.
+	無名ブランチのマージをする必要がある場合、tagを使用して一時的に名前を付けることができます。
 
-Rebase branch
--------------
+.. index::
+   single: Branch; ブランチのRebase
 
-The rebase command is the most complex command in Git. The rebase command is very similar to the merge command. Both rebase 
-and merge are used to get a branch up-to-date. The main difference is that rebase can be used to keep the history linear 
-contrary to merges.
+ブランチのRebase
+----------------
+
+rebaseコマンドは、Gitで最も複雑なコマンドです。
+rebaseコマンドはマージコマンドとよく似ています。
+rebaseとマージのどちらも、ブランチに最新の内容を取得するために使われます。
+主な違いは、rebaseを使用することで、マージの履歴を線形に維持できることにあります。
 
 .. image:: /images/rebase1.png
 
-A rebase of Refactor on top of master will perform the following actions:
+Refactorブランチでmasterブランチでrebaseすると以下のような動作になります。
 
-* All commits specific to the Refactor branch will be stashed in a temporary location
-* The branch Refactor will be removed
-* The branch Refactor will be recreated on the master branch
-* All commits will be recommitted in the new Refactor branch
+* Refactorブランチの全コミットを一時領域に退避させる
+* Refactorブランチを削除する
+* masterブランチの内容でRefactorブランチを再度作成する
+* 新しいRefactorブランチに全コミットを再度コミットする
 
-During a rebase merge conflicts can occur. You need to solve the merge conflicts for each commit that is rebased. The 
-rebase function in Git Extensions will guide you through all steps needed for a successful rebase.
+rebase中のマージで競合が発生する可能性があります。
+rebaseされた各コミットについて、競合を解消する必要があります。
+Git Extensionsは、rebase作業中に、rebaseが成功するまでの必要な全ての手順をガイドします。
 
 .. image:: /images/rebase_dialog.png
 
-The image below shows the commit log after the rebase. Notice that the history is changed and is seems like the commits on 
-the Refactor branch are created after the commits on the master branch.
+下の画像は、rebase後のコミットログの状態を表しています。
+歴史が書き換えられているため、Refactorブランチの各コミットがmasterブランチの各コミットの後に行われているように見えることに注意してください。
 
 .. image:: /images/rebase2.png
 
 .. warning::
 
-    Because this function rewrites history you should only use this on branches that are not published to other repositories 
-    yet. When you rebase a branch that is already pushed it will be harder to pull or push to that remote. If you want to get 
-    a branch up-to-date that is already published you should merge.
+    この操作は歴史を書き換えるため、他のリポジトリに公開されていないブランチでのみ使うようにしてください。
+    すでにpushされているブランチでrebaseを行うと、リモートからのpullやpushが難しくなります。
+    すでに最新の状態で公開されているブランチに対しては、マージするようにしてください。
 
-Delete branch
--------------
+.. index::
+   single: Branch; ブランチの削除
 
-It is very common to create a lot of branches. You can delete branches when they are not needed anymore and you do not want 
-to keep the work done in that branch. When you delete a branch that is not yet merged, all commits will be lost. When you 
-delete a branch that is already merged with another branch, the merged commits will not be lost because they are also part 
-of another branch. 
+ブランチの削除
+--------------
 
-You can delete a branch using ``Delete branch`` in ``Commands`` menu. If you want to delete a branch that is not merged into 
-another branch, you need to check the ``Force delete`` checkbox.
+一般的に、ブランチは数多く作成されます。
+もはや必要なくなったブランチや、ブランチ上で行った作業を保持したくない場合には、ブランチを削除することができます。
+マージされていないブランチを削除する場合、全てのコミットは失われます。
+他のブランチにマージされたブランチを削除しても、マージされたコミットは既に別のブランチの一部になっているため、失われることはありません。
+
+ブランチを削除するには、 ``Gitコマンド`` メニューの ``ブランチの削除`` を使用します。
+他のブランチにマージされていないブランチを削除したい場合には、 ``強制削除`` のチェックボックスにチェックを入れる必要があります。
 
 .. image:: /images/delet_branch.png
