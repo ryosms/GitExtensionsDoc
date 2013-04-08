@@ -1,51 +1,57 @@
 Merge Conflicts
 ===============
 
-When merging branches or commits you can get merge conflicts. Git will try to resolve these, but some conflicts 
-need to be resolved manually. Git Extensions will show warnings when there is a merge conflict.
+ブランチやコミットをマージする際、マージの競合が発生することがあります。
+Gitはそれらを解消しようとしますが、いくつかの競合は手動で解消する必要があります。
+マージの競合が発生した場合、Git Extensionsは警告を表示します。
 
 .. image:: /images/merge_conflicts.png
 
-Handle merge conflicts
-----------------------
+.. index::
+   single: Merge Conflicts; 競合の処理
 
-To solve merge conflicts just click on a warning or open the merge conflict dialog from the menu. A dialog will prompt 
-showing all conflicts. You can solve a conflict by double-click on a filename.
+競合の処理
+----------
+
+競合を解決するには、単純に警告をクリックするか、メニューから ``競合の解決`` ダイアログを開きます。
+ダイアログには、すべての競合を示すメッセージが表示されます。
+ファイル名をダブルクリックすることで、競合を解決することができます。
 
 .. image:: /images/resolve_merge_conflicts.png
 
-There are three kinds of conflicts:
+競合には3種類あります:
 
-+---------------------------------------+-------------------------------+
-|File deleted and changed               | Use modified or deleted file? |
-+---------------------------------------+-------------------------------+
-|File deleted and created               | Use created or deleted file?  |
-+---------------------------------------+-------------------------------+
-|File changed both locally and remotely | Start merge tool.             |
-+---------------------------------------+-------------------------------+
++---------------------------------------+-------------------------------------------------------+
+|削除と変更                             | 変更されたファイルか、削除されたファイルかを選択する  |
++---------------------------------------+-------------------------------------------------------+
+|削除と作成                             | 作成されたファイルか、削除されたファイルかを選択する  |
++---------------------------------------+-------------------------------------------------------+
+|ローカルとリモートの両方で変更された   | マージツールを開始する                                |
++---------------------------------------+-------------------------------------------------------+
 
+あるコミットでファイルが削除され、他のコミットで変更された場合、ダイアログで変更されたファイルを保持するかファイルを削除するかを指定します。
+競合する変更がある場合には、マージツールが開始されます。
+マージの競合を解消するのに使用するツールを設定することができます。
+下の画像では、無償の ``Perforce P4Merge`` をマージツールとして使用しています。
+Git Extensionsは、オープンソースのマージツールである、KDiff3を同梱しています。	
 
-If the file is deleted in one commit and changed in another commit, a dialog will ask to keep the modified file or delete 
-the file. When there is a conflicting change the merge tool will be started. You can configure the tool you want to use for 
-merge conflicts. The image below shows Perforce P4Merge a free to use merge tool. Git Extensions is packaged with KDiff3, an 
-open source merge tool.
+マージツールには、同じファイルの4つのバージョンが表示されます:
 
-In the merge tool you will see four versions of the same file:
-
-+--------+----------------------------------------------------------------+
-|Base    | The latest version of the file that exist in both repositories |
-+--------+----------------------------------------------------------------+
-|Local   | The latest local version of the file                           |
-+--------+----------------------------------------------------------------+
-|Remote  | The latest remote version of the file                          |
-+--------+----------------------------------------------------------------+
-|Merged  | The result of the merge                                        |
-+--------+----------------------------------------------------------------+
++--------+--------------------------------------------------------+
+|Base    | 双方のリポジトリに存在するファイルの最新バージョン     |
++--------+--------------------------------------------------------+
+|Local   | ファイルのローカルでの最新バージョン                   |
++--------+--------------------------------------------------------+
+|Remote  | ファイルのリモートでの最新バージョン                   |
++--------+--------------------------------------------------------+
+|Merged  | マージ結果                                             |
++--------+--------------------------------------------------------+
 
 .. caution::
 
-    When you are in the middle of a merge the file named local represents your file. When you are in the middle of a rebase the 
-    file named remote represents your file. This can be confusing, so double check if you are in doubt. 
+    マージの途中では、ファイルにはlocalの名前が付けられます。
+    rebaseの途中では、ファイルにはリモートの名前が付けられます。
+    これは混乱しやすいので、疑わしい場合にはダブルチェックを行なってください。
 
 .. image:: /images/perforce_p4merge.png
 
