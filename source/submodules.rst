@@ -1,55 +1,72 @@
+.. index::
+   single: Submodules
+
 Submodules
 ==========
 
-Large projects can be split into smaller parts using submodules. A submodule contains the name, url and revision of 
-another repository. To create a submodule in an existing git repository you need to add a link to another repository 
-containing the files of the submodule.
+大規模なプロジェクトでは、サブモジュールを使用することで小さなパーツに分割することができます。
+サブモジュールには、他のリポジトリの、名前、URL、そしてリビジョンが含まれます。
+既存のgitリポジトリにサブモジュールを作成するには、サブモジュールのファイルを含んだ他のリポジトリへのリンクを追加する必要があります。
 
 .. image:: /images/submodules.png
 
-Manage submodules
------------------
+.. index::
+   single: Submodules; サブモジュールの管理
 
-The current state of the submodules can be viewed with the ``Manage submodules`` function. All submodules are shown in 
-the list on the left.
+サブモジュールの管理
+--------------------
+
+``サブモジュールの管理`` 機能を使うことで、サブモジュールの現在の状態を確認することができます。
+全てのサブモジュールは、左側のリストに表示されます。
 
 .. image:: /images/submodules_dialog.png
 
-+--------------+-----------------------------------------------------------------------------------------------------------------+
-|Add submodule | Add a new submodule to the repository                                                                           |
-+--------------+-----------------------------------------------------------------------------------------------------------------+
-|Synchronize   | Synchronizes the remote URL configuration setting to the value specified in ``.gitmodules`` for the selected    |
-|              | submodule.                                                                                                      |
-+--------------+-----------------------------------------------------------------------------------------------------------------+
-|Initialize    | Initialize the selected submodules, i.e. register each submodule name and url found in ``.gitmodules`` into     |
-|              | ``.git/config``. The submodule will also be updated.                                                            |
-+--------------+-----------------------------------------------------------------------------------------------------------------+
-|Update        | Update the registered submodules, i.e. clone missing submodules and checkout the commit specified in the index  |
-|              | of the containing repository.                                                                                   |
-+--------------+-----------------------------------------------------------------------------------------------------------------+
++---------------------+--------------------------------------------------------------------------------------------------------------+
+|サブモジュールの追加 | リポジトリに新しいサブモジュールを追加します。                                                               |
++---------------------+--------------------------------------------------------------------------------------------------------------+
+|同期                 | 選択したサブモジュールについて、 ``.gitmodules`` で指定された値に、リモートURLで構成された設定を同期します。 |
++---------------------+--------------------------------------------------------------------------------------------------------------+
+|初期化               | 選択したサブモジュールを初期化します。すなわち、 ``.gitmodules`` にあるサブモジュールの名前とURLを           |
+|                     | ``.git/config`` に登録します。サブモジュールは更新もされます。                                               |
++---------------------+--------------------------------------------------------------------------------------------------------------+
+|更新                 | 登録されているサブモジュールを更新します。すなわち、行方不明のサブモジュールをクローンして、                 |
+|                     | リポジトリのインデックスで指定されたコミットをチェックアウトします。                                         |
++---------------------+--------------------------------------------------------------------------------------------------------------+
 
-Add submodule
--------------
+.. note::
+	訳注: Git Extensions 2.44のボタン配置は ``サブモジュールの追加`` 、 ``同期`` 、 ``更新`` 、 ``削除`` になっている。
 
-To add a new submodule choose ``Add submodule`` in the ``Manage submodules`` dialog. 
+.. index::
+   single: Submodules; サブモジュールの追加
+
+サブモジュールの追加
+--------------------
+
+サブモジュールを追加するには、 ``サブモジュールの管理`` ダイアログで ``サブモジュールの追加`` を選択します。
 
 .. image:: /images/add_submodules.png
 
-+------------------+-------------------------------------------------------------------------------+
-|Path to submodule | Path to the remote repository to use as submodule.                            |
-+------------------+-------------------------------------------------------------------------------+
-|Local path        | Local path to this submodule, relative to the root of the current repository. |
-+------------------+-------------------------------------------------------------------------------+
-|Branch            | Branch to track.                                                              |
-+------------------+-------------------------------------------------------------------------------+
++---------------------+--------------------------------------------------------------------------------+
+|サブモジュールのパス | サブモジュールとして使用するリモートリポジトリへのパス                         |
++---------------------+--------------------------------------------------------------------------------+
+|ローカルパス         | サブモジュールを配置するローカルのパス。現在のリポジトリルートからの相対パス。 |
++---------------------+--------------------------------------------------------------------------------+
+|ブランチ             | 追跡対象のブランチ                                                             |
++---------------------+--------------------------------------------------------------------------------+
 
-Remove submodule
-----------------
+.. index::
+   single: Submodules; サブモジュールの削除
 
-It is currently not possible to remove a submodule using the Git Extensions user interface. To remove a submodule you 
-need to manually:
+サブモジュールの削除
+--------------------
 
-* Delete the relevant line from the ``.gitmodules`` file.
-* Delete the relevant section from ``.git/config``.
-* Run ``git rm --cached path_to_submodule`` (no trailing slash).
-* Commit and delete the now untracked submodule files.
+現在のところ、Git Extensionsのユーザーインターフェイスからはサブモジュールを削除することはできません。
+サブモジュールは手動で削除する必要があります。
+
+* ``.gitmodules`` ファイルから、関連する行を削除
+* ``.git/config`` の関連するセクションを削除
+* ``git rm --cached path_to_submodule`` を実行する(末尾のデリミタは不要)
+* 追跡対象から外れたサブモジュールをコミットし、残っているファイルを削除する
+
+.. note::
+	訳注: Git Extensions 2.44では ``サブモジュールの管理`` の ``削除`` 機能がある
