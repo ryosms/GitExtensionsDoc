@@ -1,23 +1,33 @@
+.. index::
+   single: Translations
+
 Translations
 ============
 
-Change language
----------------
+.. index::
+   single: Translations; 言語の変更
 
-In the settings dialog a translation can be chosen. The translation files are located in a directory located in the 
-Git Extensions installation directory. The files are readable xml files.
+言語の変更
+----------
+
+設定ダイアログでは、言語を選択することができます。
+言語ファイルは、Git Extensionsのインストールディレクトリの中のディレクトリに保存されています。
+それは読み取り可能なXMLファイルです。
 
 .. image:: /images/choose_language.png
 
-Translate Git Extensions
-------------------------
+.. index::
+   single: Translations; Git Extensionsの翻訳
 
-The application has a built-in translation tool to help create and edit translations. To open the translation tool choose 
-``Translate`` in the ``Help`` menu.
+Git Extensionsの翻訳
+--------------------
+
+このアプリケーションには、翻訳の作成や編集に役立つ、翻訳ツールが組み込まれています。
+翻訳ツールを開くには、 ``ヘルプ`` メニューの ``翻訳`` を選択します。
 
 .. image:: /images/translate.png
 
-The functions of the translation tool are described in the image below. To contribute any translations you can either e-mail 
-a patch or send a pull request using github.
+翻訳ツールの機能は、下の画像に記載されています。
+パッチをメールするか、githubでPull Requestを送信することで、翻訳に貢献することができます。	
 
 .. image:: /images/translate_window.png
