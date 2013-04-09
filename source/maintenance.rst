@@ -1,100 +1,124 @@
+.. index::
+   single: Maintenance
+
 Maintenance
 ===========
 
-In this chapter some of the functions to maintain a repository are discussed.
+この章では、リポジトリをメンテナンスするいくつかの機能について説明します。
 
-Compress Git database
+.. index::
+   single: Maintenance; Gitデータベースの圧縮
+
+Gitデータベースの圧縮
 ---------------------
 
-Git will create a lot of files. You can run the ``Compress git database`` to pack all small files building up a repository 
-into one big file. Git will also garbage collect all unused objects that are older then 15 days. When a database is fragmented 
-into a many small files compressing the database can increase performance.
+Gitはたくさんのファイルを作成します。
+``Gitデータベースの圧縮`` を実行することで、リポジトリを構成するすべての小さなファイルをひとつの大きなファイルにまとめることができます。
+Gitはまた、15日経過した未使用のオブジェクトをGCします。
+多くの小さなファイルによってデータベースが断片化されている場合、データベースを圧縮することでパフォーマンスを向上させることができます。
 
 .. image:: /images/compress_database.png
 
-Recover lost objects
---------------------
+.. index::
+   single: Maintenance; 消してしまったオブジェクトの復元
 
-If you accidently deleted a commit you can try to recover it using the ``Recover lost objects`` function. A dialog will 
-show you all dangling objects and will allow you to review and recover them.
+消してしまったオブジェクトの復元
+--------------------------------
+
+間違ってコミットを消してしまった場合、 ``消してしまったオブジェクトの復元`` 機能を使用して回復できるかもしれません。
+ダイアログは、すべての宙ぶらりんのオブジェクトを表示するので、それらを検討してリカバリすることができます。
 
 .. image:: /images/recover_objects.png
 
-Normally Git will not delete files right away when you remove something from your repository. The reason for this is that you 
-can restore deleted items if you need to. Git will delete removed items when they are older then 15 days and you run ``Compress 
-git database``.
+通常、Gitはリポジトリから何かを削除しても、すぐにはファイルを削除しません。
+これが、必要に応じて削除したアイテムを復元することができることの理由です。
+Gitは、削除されたアイテムが15日以上経過後に、 ``Gitデータベースの圧縮`` 処理を行った場合にそれらを削除します。
 
 .. image:: /images/verify_database.png
 
-There are several functions to help you find the lost items. By default Git Extensions will only show commits. To show all 
-items, just uncheck the ``Show only commits`` option. The other options can be checked/unchecked to get more/less results. 
-Double-click on on item to view the content. When you located the item you want to recover you can tag it using the ``Tag 
-selected object`` button.
+失われたファイルを探すのに役立つ、いくつかの機能があります。
+デフォルトでは、Git Extensionsはコミットのみを表示します。
+すべての項目を表示するには、 ``コミットのみ表示`` のオプションのチェックを外すだけです。
+その他のオプションは、チェックを切り替えることで、表示結果の数が変化します。
+コンテンツを確認するには、項目をダブルクリックします。
+回復したいアイテムを見つけたら、``選択オブジェクトにタグを作成`` を使用してタグ付けができます。
 
-Git Extensions also is able to tag all lost objects. Doing this will make all lost objects visible again making it very easy 
-to locate the commit(s) you would like to recover. After recovering a commit using the ``Tag all lost commits`` button, you can 
-remove all tags using the ``Delete all LOST_AND_FOUND tags`` button.
+.. note::
+	訳注: Git Extensionsを日本語で使用していると、ダイアログの表示が一部崩れます(Git Extensions 2.44時点)
+
+Git Extensionsでは、すべての失われたオブジェクトにタグを付けることも可能です。
+そうすれば、すべての失われたオブジェクトが再び表示されるようになるため、回復したいコミットを探すのが楽になります。
+``全コミットにタグを作成`` ボタンを使用してコミットを回復した後は、 ``LOST_AND_FOUNDタグを全削除`` ボタンですべてのタグを削除できます。
 
 .. image:: /images/lost_found.png
 
-Fix user names
+.. index::
+   single: Maintenance; ユーザ名の修正
+
+ユーザ名の修正
 --------------
 
-When someone accidentally committed using a wrong username this can be fixed using the ``Edit .mailmap`` function. Git will use 
-the username for an email address when it is set in the ``.mailmap`` file.
+誰かが、間違って誤ったユーザ名でコミットをしてしまった場合、 ``.mailmapファイルの編集`` 機能を使用して修正できます。
+``.mailmap`` ファイルが設定されている場合、Gitはそのメールアドレスに対応したユーザ名を使用します。
 
 .. image:: /images/mail_map.png
 
-Fix user name using commit email:
+コミットのメールアドレスを使用してユーザ名を修正する場合:
 
 .. code-block:: text
 
     Proper Name <commit@email.xx>
 
-Fix email address using commit email:
+コミットのメールアドレスを使用してメールアドレスを修正する場合:
 
 .. code-block:: text
     
     <proper@email.xx> <commit@email.xx>
 
-Fix email address and name using commit email:
+コミットのメールアドレスを使用してメールアドレスとユーザ名を修正する場合:
 
 .. code-block:: text
 
     Proper Name <proper@email.xx> <commit@email.xx>
 
-Fix email address and name using commit name and email:
+コミットのユーザ名とメールアドレスを使用してメールアドレスとユーザ名を修正する場合:	
 
 .. code-block:: text
 
     Proper Name <proper@email.xx> Commit Name <commit@email.xx>
 
-Ignore files
-------------
+.. index::
+   single: Maintenance; ファイルの無視
 
-Git will track all files that are in the working directory. Normally you do not want to exclude all files that are created 
-by the compiler. You can add files that should be ignored to the .gitignore file. You can use wildcards and regular expressions. 
-All entries are case sensitive. The button ``Add default ignores`` will add files that should be ignored when using Visual Studio.
+ファイルの無視
+--------------
+
+Gitは、作業ディレクトリに存在するすべてのファイルを追跡します。
+通常は、コンパイラによって作成されたすべてのファイルを除外したくはありません。
+``.gitignore`` ファイルに無視したいファイルを追加することができます。
+ワイルドカードと正規表現を使用することができます。
+すべてのエントリは大文字と小文字が区別されます。
+``デフォルトの無視ファイル`` ボタンによって、Visual Studioを使用している際に無視されるべきパターンが追加されます。
 
 .. image:: /images/gitignore.png
 
-A short overview of the syntax:
+構文の簡単な概要:
 
-+-----+--------------------------------------------------------------------------------------------------------------------------+
-|#    | Lines started with ``#`` are handled as comments                                                                         |
-+-----+--------------------------------------------------------------------------------------------------------------------------+
-|!    | Lines started with ``!`` are exclude patterns                                                                            |
-+-----+--------------------------------------------------------------------------------------------------------------------------+
-|[Dd] | Characters inside ``[..]`` means that 1 of the characters must match                                                     |
-+-----+--------------------------------------------------------------------------------------------------------------------------+
-|\*   | Wildcard                                                                                                                 |
-+-----+--------------------------------------------------------------------------------------------------------------------------+
-|/    | A leading slash matches the beginning of the pathname; for example, ``/*.c`` matches ``cat-file.c`` but not              |
-|     | ``mozilla-sha1/sha1.c``                                                                                                  |
-+-----+--------------------------------------------------------------------------------------------------------------------------+
-|/    | If the pattern ends with a slash, it is removed for the purpose of the following description, but it would only find a   |
-|     | match with a directory. In other words, foo/ will match a directory foo and paths underneath it, but will not match a    |
-|     | regular file or a symbolic link foo (this is consistent with the way how pathspec works in general in git).              |
-+-----+--------------------------------------------------------------------------------------------------------------------------+
++-----+---------------------------------------------------------------------------------------------------------------------------------+
+|#    | ``#`` で開始された行は、コメントとして扱われます。                                                                              |
++-----+---------------------------------------------------------------------------------------------------------------------------------+
+|!    | ``!`` で開始された行は、除外パターンになります。                                                                                |
++-----+---------------------------------------------------------------------------------------------------------------------------------+
+|[Dd] | ``[..]`` で囲まれた文字のうち、1文字がマッチする必要があります。                                                                |
++-----+---------------------------------------------------------------------------------------------------------------------------------+
+|\*   | ワイルドカード                                                                                                                  |
++-----+---------------------------------------------------------------------------------------------------------------------------------+
+|/    | 先頭のスラッシュはパス名の先頭にマッチします。                                                                                  |
+|     | 例えば、 ``/*.c`` は ``cat-file.c`` にマッチしますが、 ``mozilla-sha1/sha1.c`` にはマッチしません。                             |
++-----+---------------------------------------------------------------------------------------------------------------------------------+
+|/    | パターンがスラッシュで終了している場合、以下の説明で除去されますが、ディレクトリのみとマッチします。言い換えると、              |
+|     | ``foo/`` はfooというディレクトリと、その配下のパスと一致しますが、fooという通常のファイルやシンボリックリンクとは一致しません。 |
+|     | (これは、gitの中で、pathspecの一般的な動作の仕方と一致しています)                                                               |
++-----+---------------------------------------------------------------------------------------------------------------------------------+
 
-For more `detailed information <http://www.kernel.org/pub/software/scm/git/docs/gitignore.html>`_.
+`より詳細な情報はここを参照してください <http://www.kernel.org/pub/software/scm/git/docs/gitignore.html>`_.
