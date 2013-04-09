@@ -1,11 +1,18 @@
+.. index::
+   single: Command line
+
 Command line
 ============
 
-Git Extensions command line
----------------------------
+.. index::
+   single: Command line; Git Extensionsのコマンドライン
 
-Most features can be started from the command line. It is recommended to add ``gitex.cmd`` to the path 
-when using from the command line. It is typically stored in the ``C:\Program Files (x86)\GitExtensions`` folder.
+Git Extensionsのコマンドライン
+------------------------------
+
+ほとんどの機能はコマンドラインから実行することもできます。
+コマンドラインを使用する場合、 ``gitex.cmd`` をパスに追加することをお勧めします。
+通常は、 ``C:\Program Files (x86)\GitExtensions`` フォルダに保存されています。
 
 .. image:: /images/command_line_usage.png
 
