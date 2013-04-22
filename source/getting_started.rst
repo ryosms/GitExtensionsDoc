@@ -92,7 +92,9 @@ Git Extensionsの初回起動時にすべての設定が検証されます。
 
 .. image:: /images/settings/checklist.png
 
-Git Extensions固有の設定は、すべてWindowsのレジストリに保存されます。
+Git Extensions固有の設定は、すべてユーザーのアプリケーションデータパス、もしくはプログラムフォルダに保存されます。
+ファイルの保存場所は、 プログラムと同じ階層にある ``GitExtensions.exe.config`` 中の ``IsPortable`` 設定に依存します。
+
 Gitで使用される設定は、すべてGitの設定ファイルに保存されます。
 グローバルな設定は、ユーザーディレクトリの ``.gitconfig`` というファイルに保存されます。
 ローカル設定は、リポジトリの中の ``.git\config`` に保存されます。
